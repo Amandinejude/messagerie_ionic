@@ -12,12 +12,12 @@
 	</div>
 	  <a class="item item-icon-right" ng-click="showareaCode()">{{choseArea.name}} (+{{choseArea.areacode}})<i class="icon ion-ios-arrow-right"></i></a>
 	  <div class="item item-input">
-		<input type="number" ng-model="data.phone" placeholder="Enter phone number">
+		<input type="tel" ng-model="data.phone" placeholder="Enter phone number" required>
 		<button class="button button-clear" style="display:{{clearValue}}" ng-click="data.phone=null">
 		<i class="icon ion-ios-close-empty"></i></button>
 	  </div>
 	  <div class="item item-input">
-		<input type="{{showValue.type}}" ng-model="data.password" placeholder="Enter password">
+		<input type="{{showValue.type}}" ng-model="data.password" placeholder="Enter password" required>
 		<button class="button button-clear" ng-click="data.password=null">
 		<i class="icon ion-ios-close-empty"></i></button>
 		<button class="button button-clear" ng-click="showPassword()">{{showValue.text}}</button>

@@ -14,7 +14,7 @@ angular.module('mike', ['ionic', 'mike.services', 'mike.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
 
-        .state('tab', {
+    .state('tab', {
         cache: false,
         url: '/tab',
         abstract: true,
@@ -260,6 +260,6 @@ angular.module('mike', ['ionic', 'mike.services', 'mike.controllers'])
 
     ;
 
-    $urlRouterProvider.otherwise('/tab/messages');
+    $urlRouterProvider.otherwise('/walkthrough'); // la page par défaut
 
 })
