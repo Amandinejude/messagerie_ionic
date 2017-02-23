@@ -4,13 +4,15 @@ angular.module('mike.controllers', [])
 
 })
 
-.controller('signCtrl', function($scope, $state, $ionicPopup) {
+.controller('signCtrl', function($scope, $state, Login) {
+//////LOGIN
   $scope.data = {}; // data qui correspond au ng-model="data.phone" et "data.password" du form
+  //window.localStorage.setItem("")
   $scope.login = function(){ // login qui correspond à la function du ng-click="login()" du form
     if($scope.data.phone === undefined) {
       console.log('veuillez entrer votre numéro');
     }else if ($scope.data.password === undefined){
-      console.log('veuillez saisir un mdpassevotre numéro');
+      console.log('veuillez saisir votre mdpasse');
     }else{
         if ($scope.data.phone == "0672406574" && $scope.data.password == "aaa"){
           //si les données correspondent alors on accède à la page message
@@ -22,6 +24,25 @@ angular.module('mike.controllers', [])
         console.log($scope.data);
     }
   }
+
+///////REGISTER
+  $scope.register = function(){
+    if($scope.data.phone === undefined){
+      console.log('veuillez entrer votre numéro');
+    }else if ($scope.data.email === undefined){
+      console.log('veuillez saisir votre email');
+    }else if ($scope.data.password === undefined){
+      console.log('veuillez saisir votre mot de passe');
+    }else if ($scope.data.password != $scope.data.repassword){
+      console.log('veuillez saisir votre mot de passe');
+    }else{
+      //  Login.set($scope.data);
+      localStorage.setItem("user", JSON.stringify($scope.data));
+      $state.go('tab.messages');
+    }
+
+  }
+
 })
 
 .controller('tabCtrl', function($scope, $state) {
