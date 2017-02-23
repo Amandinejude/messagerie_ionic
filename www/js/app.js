@@ -1,6 +1,6 @@
 angular.module('mike', ['ionic', 'mike.services', 'mike.controllers'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $state, Login) {
     $ionicPlatform.ready(function() {
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -8,6 +8,12 @@ angular.module('mike', ['ionic', 'mike.services', 'mike.controllers'])
         }
         if (window.StatusBar)
             StatusBar.styleDefault();
+
+
+        //check si setItem dans localStorage, si oui, accès aux msg
+        if (localStorage.getItem("user"))
+          $state.go('tab.messages');
+
     });
 })
 
