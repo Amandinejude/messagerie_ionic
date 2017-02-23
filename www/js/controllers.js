@@ -4,10 +4,13 @@ angular.module('mike.controllers', [])
 
 })
 
-.controller('signCtrl', function($scope, $state, Login) {
+.controller('signCtrl', function($scope, $state, Login, $window) {
 //////LOGIN
   $scope.data = {}; // data qui correspond au ng-model="data.phone" et "data.password" du form
-  //window.localStorage.setItem("")
+  $scope.goBack = function(){
+    $window.history.back();
+  }
+
   $scope.login = function(){ // login qui correspond à la function du ng-click="login()" du form
     if($scope.data.phone === undefined) {
       console.log('veuillez entrer votre numéro');
