@@ -19,7 +19,8 @@ angular.module('mike.controllers', [])
     }else{
         if ($scope.data.phone == "0672406574" && $scope.data.password == "aaa"){
           //si les données correspondent alors on accède à la page message
-          console.log('connexion validée !');
+          localStorage.setItem("user", JSON.stringify($scope.data));
+          //console.log('connexion validée !');
           $state.go('tab.messages');
         }else{
             console.log('Identifiant inconnu');
@@ -53,7 +54,9 @@ angular.module('mike.controllers', [])
 })
 
 .controller('messagesCtrl', function($scope, $state, $ionicPopup) {
-
+  $scope.goBack = function(){
+    $window.history.back();
+  }
 })
 
 .controller('messagesDetail', function($scope, $state) {
@@ -120,8 +123,11 @@ angular.module('mike.controllers', [])
 
 })
 
-.controller('settingsCtrl', function($scope, $state) {
-
+.controller('settingsCtrl', function($scope, $state, Settings) {
+  $scope.showPopupLogout=function(){
+    localStorage.clear();
+    $state.go('login');
+  };
 })
 
 .controller('changePasswordCtrl', function($scope, $state) {
